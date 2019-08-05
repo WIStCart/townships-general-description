@@ -42,12 +42,12 @@
       const map = L.map('map').setView([45,-90], 7);
       
       // Adding Voyager Basemap
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png', {
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}.png', {
         maxZoom: 18
       }).addTo(map);
 
       // Adding Voyager Labels
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}.png', {
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/light_only_labels/{z}/{x}/{y}.png', {
         maxZoom: 18,
         zIndex: 10
       }).addTo(map);
@@ -68,27 +68,27 @@
       const townshipsStyle = new carto.style.CartoCSS(`
         #layer {
           polygon-fill: #162945;
-          polygon-opacity: 0.5;
+          polygon-opacity: 0.1;
           ::outline {
-            line-width: 1;
+            line-width: 2;
             line-color: #FFFFFF;
             line-opacity: 0.5;
           }
         }
-        #layer::labels[zoom>=11] {
+        #layer::labels[zoom>=10] {
           text-size: 14;
           text-name: [dtr];
-          text-face-name: 'DejaVu Sans Book';
-          text-fill: #FFFFFF;
+          text-face-name: 'Lato Bold';
+          text-fill: #465159;
           text-label-position-tolerance: 0;
           text-halo-radius: 1;
-          text-halo-fill: #6F808D;
+          text-halo-fill: #FFFFFF;
           text-dy: -10;
           text-allow-overlap: true;
           text-placement: point;
           text-placement-type: dummy;
         }
-        #layer::labels[zoom>=13] {
+        #layer::labels[zoom>=12] {
           text-size: 24;
         }
       `);
