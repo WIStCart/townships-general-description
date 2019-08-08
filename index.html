@@ -110,7 +110,9 @@
 
         // Update widget
         const dtr = featureEvent.data.dtr
-        const twpDesc = featureEvent.data.general_desc.replace(/\\n/g, "<br>").replace(/\\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+        
+        const twpDesc = (featureEvent.data.general_desc||'----').replace(/\\n/g, "<br>").replace(/\\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+        
         const cartodb_id = featureEvent.data.cartodb_id;
 
         const widgetDom = document.querySelector('#townshipDescriptionWidget');
