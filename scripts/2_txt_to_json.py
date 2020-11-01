@@ -38,6 +38,19 @@ with open(in_file) as infile:
 				dtr = d + t + r
 
 				desc = record.split('\n', 1)[1]
+
+				# Remove characters
+				expressions = [
+					["[\n\r\t]"," "],
+					[" {2,}"," "],
+					["((^ )|( $))",""],
+					["\*{2,}(?=[^\*\r\n]+)","Notes from Digitizer: "],
+					["\*{2,}",""],
+					["(?<=\w) -(?=\w)",""],
+					["(?<=\w)- (?=\w)",""]
+				]
+				for expression in expressions: 
+					desc = re.sub(expression[0], expression[1], desc)
 				
 				# Add to dict
 				desc_dict[dtr] = desc
